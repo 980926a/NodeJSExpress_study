@@ -11,6 +11,14 @@ module.exports = {
             return res.status(400).send(defaultRes.successFalse(statusCode.NO_CONTENT),resMessage.NULL_VALUE);
         }
         res.status(200).send(defaultRes.successTrue(statusCode.OK, resMessage.INPUT_SUCCESS));
+    },
+    uploadImages : async (req,res)=>{
+        const image = req.files;
+        const path = image.map(img => img.path);
+        if(image === undefined){
+            return res.status(400).send(defaultRes.successFalse(statusCode.NO_CONTENT),resMessage.INPUT_SUCCESS);
+        }
+        res.status(200).send(defaultRes.successTrue(statusCode.OK,resMessage.INPUT_SUCCESS));
     }
 }
 
